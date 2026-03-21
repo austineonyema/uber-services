@@ -3,6 +3,7 @@ import { LoggingController } from './logging.controller';
 import { LoggingService } from './logging.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { RiderCoordinatesModule } from './rider-coordinates/rider-coordinates.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         autoIndex: false, //*
       }),
     }),
+    RiderCoordinatesModule,
   ],
   controllers: [LoggingController],
   providers: [LoggingService],
