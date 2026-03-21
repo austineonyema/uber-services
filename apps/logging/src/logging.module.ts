@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { LoggingServiceController } from './logging-service.controller';
-import { LoggingServiceService } from './logging-service.service';
-import { MongooseModule } from '@nestjs/mongoose';
+import { LoggingController } from './logging.controller';
+import { LoggingService } from './logging.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       }),
     }),
   ],
-  controllers: [LoggingServiceController],
-  providers: [LoggingServiceService],
+  controllers: [LoggingController],
+  providers: [LoggingService],
 })
-export class LoggingServiceModule {}
+export class LoggingModule {}
