@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { RiderService } from './rider.service';
 
 @Controller()
@@ -11,7 +11,7 @@ export class RiderController {
   }
 
   @Get()
-  getRiderById(): string {
+  getRiderById(@Param('id') _id: string): string {
     return this.riderService.getHello();
   }
 }

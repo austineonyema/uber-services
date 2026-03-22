@@ -22,7 +22,9 @@ export class RiderCoordinatesService {
     return coordinates;
   }
 
-  async saveRiderCoordinates(createCoordinatesDTO: CreateCoordinatesDto) {
+  async saveRiderCoordinates(
+    createCoordinatesDTO: CreateCoordinatesDto,
+  ): Promise<RiderCoordinateDocument> {
     const coordinates =
       await this.RiderCoordinates.create(createCoordinatesDTO);
     return coordinates;

@@ -11,7 +11,7 @@ import { RiderCoordinatesModule } from './rider-coordinates/rider-coordinates.mo
     MongooseModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('DATABASE_URL'),
+        uri: config.get<string>('MONGO_DATABASE_URL'),
         maxPoolSize: 20,
         minPoolSize: 5,
         serverSelectionTimeoutMS: 5000,
