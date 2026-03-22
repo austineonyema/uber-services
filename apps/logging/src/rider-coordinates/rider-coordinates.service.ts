@@ -13,6 +13,11 @@ export class RiderCoordinatesService {
     private readonly RiderCoordinates: Model<RiderCoordinateDocument>,
   ) {}
 
+  async getRiderCoordinates(): Promise<RiderCoordinateDocument[]> {
+    const coordinates = await this.RiderCoordinates.find({}).lean().exec();
+    return coordinates;
+  }
+
   async saveRiderCoordinates(createCoordinatesDTO: CreateCoordinatesDto) {
     const coordinates =
       await this.RiderCoordinates.create(createCoordinatesDTO);

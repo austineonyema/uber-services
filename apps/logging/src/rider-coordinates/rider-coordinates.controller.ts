@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { RiderCoordinatesService } from './rider-coordinates.service';
 import { CreateCoordinatesDto } from './dto/create-coordinates.dto';
+import { RiderCoordinateDocument } from './schemas/rider-coordinates.schema';
 
 @Controller('rider-coordinates')
 export class RiderCoordinatesController {
@@ -9,8 +10,8 @@ export class RiderCoordinatesController {
   ) {}
 
   @Get()
-  getRiderCoordinates() {
-    return 'Hello, I am from the rider coordinates';
+  async getRiderCoordinates(): Promise<RiderCoordinateDocument[]> {
+    return await this.riderCoordinatesService.getRiderCoordinates();
   }
 
   @Post()
