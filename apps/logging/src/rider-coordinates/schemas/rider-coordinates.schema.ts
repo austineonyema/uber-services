@@ -1,13 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Query, Types } from 'mongoose';
-// import { TEAM_ROLES, USER_ROLES, USER_STATUSES } from 'src/enums';
-// import type { TeamRole, UserRole, UserStatus } from 'src/enums';
-// import { ORGANIZATION_MODEL } from 'src/organizations/schemas/organization.schema';
-// import { TEAM_MODEL } from 'src/teams/schemas/team.schema';
-// import bcrypt from 'bcryptjs';
 
-export const RIDER_COORDINATES_MODEL = 'RiderCoordinates';
-export const RIDER_COLLECTION = 'riders';
+export const RIDER_COORDINATES_MODEL = 'RiderCoordinate';
+export const RIDER_COLLECTION = 'riders_coordinates';
 
 export type RiderCoordinateDocument = HydratedDocument<RiderCoordinates>;
 
@@ -16,12 +11,16 @@ export type RiderCoordinateDocument = HydratedDocument<RiderCoordinates>;
   timestamps: true,
   versionKey: false,
 })
-export class User {
-  //   @Prop({ type: Types.ObjectId, ref: ORGANIZATION_MODEL, required: false })
-  //   organizationId?: Types.ObjectId;
-  //   createdAt: Date;
-  //   updatedAt: Date;
+export class RiderCoordinates {
+  @Prop({ required: true })
+  lat: number;
+
+  @Prop({ required: true })
+  long: number;
+
+  @Prop({ required: true })
+  rider: string;
 }
 
-export const RiderCoordinatesSchema =
+export const RiderCoordinateSchema =
   SchemaFactory.createForClass(RiderCoordinates);
