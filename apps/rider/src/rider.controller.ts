@@ -9,4 +9,9 @@ export class RiderController {
   getHello(): string {
     return this.riderService.getHello();
   }
+
+  @Get()
+  getRiderById(): string {
+    return this.riderService.getHello();
+  }
 }

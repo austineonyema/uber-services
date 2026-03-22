@@ -13,8 +13,12 @@ export class RiderCoordinatesService {
     private readonly RiderCoordinates: Model<RiderCoordinateDocument>,
   ) {}
 
+  //communicate with the rider microservice by using rider id for population
+
+  // communication can be via tcp, rabbitmq, kafka, nats, redis (sync(tcp,http, nats core) or async (the rest) )
+
   async getRiderCoordinates(): Promise<RiderCoordinateDocument[]> {
-    const coordinates = await this.RiderCoordinates.find({}).lean().exec();
+    const coordinates = await this.RiderCoordinates.find().lean().exec();
     return coordinates;
   }
 
