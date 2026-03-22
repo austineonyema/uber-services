@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { RiderService } from './rider.service';
+import { type RiderClone, RiderService } from './rider.service';
 
-@Controller()
+@Controller('rider')
 export class RiderController {
   constructor(private readonly riderService: RiderService) {}
 
@@ -10,8 +10,8 @@ export class RiderController {
     return this.riderService.getHello();
   }
 
-  @Get()
-  getRiderById(@Param('id') _id: string): string {
-    return this.riderService.getHello();
+  @Get(':id')
+  getRiderById(@Param('id') id: string): RiderClone {
+    return this.riderService.getRiderById(id);
   }
 }
