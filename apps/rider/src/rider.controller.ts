@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { type RiderClone, RiderService } from './rider.service';
+import { MessagePattern } from '@nestjs/microservices';
 
 @Controller('rider')
 export class RiderController {
@@ -10,8 +11,8 @@ export class RiderController {
     return this.riderService.getHello();
   }
 
-  @Get(':id')
-  getRiderById(@Param('id') id: string): RiderClone {
-    return this.riderService.getRiderById(id);
+  @MessagePattern({ cmd: 'get-rider' })
+  async getRiderById(data: RiderClone): Promise<RiderClone> {
+    return await this.riderService.getRiderById(data);
   }
 }

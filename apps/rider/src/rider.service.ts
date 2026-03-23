@@ -12,13 +12,13 @@ export class RiderService {
     return 'Hello World!';
   }
 
-  getRiderById(id: string): RiderClone {
+  async getRiderById(data: RiderClone): Promise<RiderClone> {
     const rider = {
-      _id: id,
+      _id: data._id,
       firstName: 'John',
       lastName: 'Doe',
       email: 'johndoe@gmail.com',
     };
-    return rider;
+    return Promise.resolve(rider);
   }
 }
