@@ -19,7 +19,8 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 
 COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
+COPY --from=deps /usr/src/app/node_modules ./node_modules
+RUN npm prune --omit=dev
 
 COPY --from=build /usr/src/app/dist ./dist
 
