@@ -11,6 +11,6 @@ async function bootstrap() {
       transform: true,
     }),
   );
-  await app.listen(process.env.port ?? 3002);
+  await app.listen(Number(process.env.PORT) || 3002, '0.0.0.0');
 }
 void bootstrap();

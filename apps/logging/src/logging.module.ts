@@ -15,7 +15,7 @@ import { RiderCoordinatesModule } from './rider-coordinates/rider-coordinates.mo
         maxPoolSize: 20,
         minPoolSize: 5,
         serverSelectionTimeoutMS: 5000,
-        autoIndex: false, //*
+        autoIndex: false, //*important for performance
       }),
     }),
     RiderCoordinatesModule,

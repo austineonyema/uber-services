@@ -7,6 +7,7 @@ import {
   RiderCoordinateSchema,
 } from './schemas/rider-coordinates.schema';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -16,8 +17,18 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         schema: RiderCoordinateSchema,
       },
     ]),
-    ClientsModule.register([
-      { name: 'RIDER_SERVICE', transport: Transport.TCP },
+    ClientsModule.registerAsync([
+      {
+        name: 'RIDER_SERVICE',
+        inject: [ConfigService],
+        useFactory: (config: ConfigService) => ({
+          transport: Transport.TCP,
+          options: {
+            host: config.get<string>('RIDER_SERVICE_HOST', 'localhost'),
+            port: config.get<number>('RIDER_SERVICE_PORT', 3001),
+          },
+        }),
+      },
     ]),
   ],
   controllers: [RiderCoordinatesController],
